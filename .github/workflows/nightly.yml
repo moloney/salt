@@ -204,7 +204,7 @@ jobs:
 #      changed-files: ${{ needs.prepare-workflow.outputs.changed-files }}
 
   prepare-release:
-    name: Create Release Diff
+    name: Prepare Release
     if: ${{ fromJSON(needs.prepare-workflow.outputs.jobs)['github-hosted-runners'] }}
     needs:
       - prepare-workflow
