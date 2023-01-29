@@ -83,6 +83,7 @@ jobs:
           workflow: ci.yml
           run_id: ${{ inputs.artifacts_run_id }}
           run_number: ${{ inputs.artifacts_run_number }}
+          workflow_conclusion: in_progress
           if_no_artifact_found: fail
 
       - name: Download System Dependencies
