@@ -13,12 +13,6 @@ on:
       dev-build:
         type: boolean
         default: false
-      artifacts_run_id:
-        type: string
-        required: true
-      artifacts_run_number:
-        type: string
-        required: true
     secrets:
       FOO:
         required: true
@@ -34,8 +28,6 @@ jobs:
       salt-version: "${{ inputs.salt-version }}"
       dev-build: ${{ inputs.dev-build }}
       key-id: "37A710479D30D7B6"
-      artifacts_run_id: ${{ inputs.artifacts_run_id }}
-      artifacts_run_number: ${{ inputs.artifacts_run_number }}
     secrets:
       FOO: ${{ secrets.FOO }}
       SECRETS_KEY: ${{ secrets.SECRETS_KEY }}
