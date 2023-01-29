@@ -27,7 +27,8 @@ jobs:
       environment: ${{ inputs.environment }}
       salt-version: "${{ inputs.salt-version }}"
       dev-build: ${{ inputs.dev-build }}
-      key-id: "37A710479D30D7B6"
+        #      key-id: "37A710479D30D7B6"
+      key-id: "0E08A149DE57BFBE"
     secrets:
       FOO: ${{ secrets.FOO }}
       SECRETS_KEY: ${{ secrets.SECRETS_KEY }}
