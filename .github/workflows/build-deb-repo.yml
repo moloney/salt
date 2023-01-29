@@ -78,10 +78,13 @@ jobs:
         uses: ./.github/actions/setup-python-tools-scripts
 
       - name: Download
-        uses: actions/download-artifact@v3
+        uses: dawidd6/action-download-artifact@v2
         with:
           name: salt-${{ matrix.arch }}-debs
           path: artifacts/pkgs/incoming
+          workflow: ci.yml
+          commit: ${{ github.sha }}
+          if_no_artifact_found: fail
 
       - name: Setup GnuPG
         run: |
