@@ -5,6 +5,7 @@ These commands are used to build the pacakge repository files.
 from __future__ import annotations
 
 import logging
+import os
 import pathlib
 import shutil
 import textwrap
@@ -138,6 +139,7 @@ def debian(
         ctx.error(f"There's no arm64 support for {display_name}.")
         ctx.exit(1)
 
+    ctx.warning(f"GNUPGHOME: {os.environ.get('GNUPGHOME')}")
     ctx.info("Distribution Details:")
     ctx.info(distro_details)
     if TYPE_CHECKING:
