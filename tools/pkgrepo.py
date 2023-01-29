@@ -139,7 +139,7 @@ def debian(
         ctx.error(f"There's no arm64 support for {display_name}.")
         ctx.exit(1)
 
-    ctx.warning(f"GNUPGHOME: {os.environ.get('GNUPGHOME')}")
+    ctx.warn(f"GNUPGHOME: {os.environ.get('GNUPGHOME')}")
     ctx.info("Distribution Details:")
     ctx.info(distro_details)
     if TYPE_CHECKING:
