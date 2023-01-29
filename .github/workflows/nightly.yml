@@ -38,6 +38,8 @@ jobs:
       environment: nightly
       salt-version: "${{ needs.ci.outputs.salt-version }}"
       dev-build: true
+      artifacts_run_id: ${{ needs.ci.outputs.run-id }}
+      artifacts_run_number: ${{ needs.ci.outputs.run-number }}
     secrets:
       FOO: ${{ secrets.FOO }}
       SECRETS_KEY: ${{ secrets.SECRETS_KEY }}

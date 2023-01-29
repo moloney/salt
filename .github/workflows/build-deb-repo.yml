@@ -16,6 +16,12 @@ on:
       environment:
         type: string
         description: On which GitHub Environment Context To Run
+      artifacts_run_id:
+        type: string
+        required: true
+      artifacts_run_number:
+        type: string
+        required: true
     secrets:
       FOO:
         required: true
@@ -69,6 +75,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Download Packages
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          name: salt-${{ matrix.arch }}-debs
+          path: artifacts/pkgs/incoming
+          workflow: ci.yml
+          run_id: ${{ inputs.artifacts_run_id }}
+          run_number: ${{ inputs.artifacts_run_number }}
+          if_no_artifact_found: fail
+
       - name: Download System Dependencies
         run: |
           sudo apt update
@@ -76,15 +92,6 @@ jobs:
 
       - name: Setup Python Tools Scripts
         uses: ./.github/actions/setup-python-tools-scripts
-
-      - name: Download
-        uses: dawidd6/action-download-artifact@v2
-        with:
-          name: salt-${{ matrix.arch }}-debs
-          path: artifacts/pkgs/incoming
-          workflow: ci.yml
-          commit: ${{ github.sha }}
-          if_no_artifact_found: fail
 
       - name: Setup GnuPG
         run: |

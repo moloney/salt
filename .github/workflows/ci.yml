@@ -22,6 +22,10 @@ on:
         value: "${{ jobs.prepare-workflow.outputs.cache-seed }}"
       jobs:
         value: "${{ jobs.prepare-workflow.outputs.jobs }}"
+      run-id:
+        value: ${{ github.run_id }}
+      run-number:
+        value: ${{ github.run_number }}
 
 env:
   COLUMNS: 160
