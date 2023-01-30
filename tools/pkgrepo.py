@@ -45,7 +45,7 @@ pkg = command_group(
         },
         "distro_arch": {
             "help": "The distribution architecture",
-            "choices": ("x86_64", "amd64", "arm64"),
+            "choices": ("x86_64", "amd64", "aarch64", "arm64"),
         },
         "dev_build": {
             "help": "Developement repository target",
