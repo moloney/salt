@@ -25,6 +25,10 @@ jobs:
           name: salt-${{ inputs.environment }}-repo
           path: repo/
 
+      - name: Show Repository
+        run: |
+          tree -a repo/
+
       - name: Upload Repository Contents(${{ inputs.environment }})
         run: |
-          aws s3 cp repo/* s3://salt-project-prod-salt-artifacts-${{ inputs.environment }}
+          aws s3 cp --acl bucket-owner-full-control --recursive repo/ s3://salt-project-prod-salt-artifacts-${{ inputs.environment }}
