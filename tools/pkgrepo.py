@@ -148,7 +148,6 @@ def debian(
         assert isinstance(distro_details["suitename"], str)
     label: str = distro_details["label"]
     codename: str = distro_details["codename"]
-    suitename: str = distro_details["suitename"]
 
     salt_archive_keyring_gpg_file = (
         pathlib.Path("~/salt-archive-keyring.gpg").expanduser().resolve()
@@ -159,6 +158,7 @@ def debian(
 
     ftp_archive_config_suite = ""
     if distro == "debian":
+        suitename: str = distro_details["suitename"]
         ftp_archive_config_suite = (
             f"""\n    APT::FTPArchive::Release::Suite "{suitename}";\n"""
         )
